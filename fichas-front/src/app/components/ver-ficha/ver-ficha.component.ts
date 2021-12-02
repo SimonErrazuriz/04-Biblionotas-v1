@@ -13,7 +13,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class VerFichaComponent implements OnInit {
   public ficha!: any;
-  public titulo: String;
   public Editor = ClassicEditor;
   public FichaModel!: Ficha;
 
@@ -21,9 +20,7 @@ export class VerFichaComponent implements OnInit {
   constructor(
     private fichasService: FichasService,
     private _route: ActivatedRoute
-  ) {
-    this.titulo = 'Ver ficha';
-  }
+  ) {}
 
   ngOnInit(): void {
     this.getFicha();

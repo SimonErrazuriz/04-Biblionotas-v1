@@ -1,9 +1,9 @@
 <h1>Crear ficha</h1>
 
 <form #fichaForm="ngForm" (ngSubmit)="addFicha(fichaForm)">
-    <label for="title">Titulo</label>
+    <label for="title">Título</label>
     <input type="text" name="title" ngModel>
-    <label for="title">Contenido</label>
-    <input type="text" name="content" ngModel>
+    <label for="title">Descripción</label>
+    <input type="text" name="description" ngModel>
     <input type="submit" value="Guardar">
 </form>

@@ -1,7 +1,6 @@
-<h1>{{titulo}}</h1>
 <ul *ngIf="ficha">
-    <li>{{ficha.title}}</li>
-    <li>{{ficha.content}}</li>
+    <h1>{{ficha.title}}</h1>
+    <li>{{ficha.description}}</li>
 </ul>
 
 <ckeditor [editor]="Editor" [(ngModel)]="ficha.content"></ckeditor>

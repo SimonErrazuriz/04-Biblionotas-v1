@@ -1,12 +1,9 @@
 <h1>Mis fichas</h1>
 
 <ul *ngFor="let ficha of fichas">
-    <li>title: {{ficha.title}}</li>
-    <li>content: {{ficha.content}}</li>
-    
-        <button (click)="deleteFicha(ficha._id)">Borrar</button>
-        <button>Editar</button>
-        <button><a [routerLink]="['/ver-ficha', ficha._id]">Ver</a></button>
-    
+    <li>Título: {{ficha.title}}</li>
+    <li>Descripción: {{ficha.description}}</li>
 
+    <button (click)="deleteFicha(ficha._id)">Borrar</button>
+    <button><a [routerLink]="['/ver-ficha', ficha._id]">Ver</a></button>
 </ul>
