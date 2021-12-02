@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FichasService } from 'src/app/services/fichas.service';
 import { Ficha } from 'src/app/models/fichas';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 import { ActivatedRoute } from '@angular/router';
 
@@ -13,6 +14,9 @@ import { ActivatedRoute } from '@angular/router';
 export class VerFichaComponent implements OnInit {
   public ficha!: any;
   public titulo: String;
+  public Editor = ClassicEditor;
+  public FichaModel!: Ficha;
+
 
   constructor(
     private fichasService: FichasService,
