@@ -12,6 +12,7 @@ app.use(cors());
 
 /* Cargar las rutas */
 app.use("/api/fichas", require('./routes/fichas'));
+app.use("/api/usuarios", require('./routes/usuarios'));
 
 
 
