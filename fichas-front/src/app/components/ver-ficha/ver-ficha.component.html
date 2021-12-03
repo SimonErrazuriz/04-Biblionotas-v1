@@ -1,6 +1,5 @@
-<ul *ngIf="ficha">
+<div *ngIf="ficha">
     <h1>{{ficha.title}}</h1>
-    <li>{{ficha.description}}</li>
-</ul>
-
-<ckeditor [editor]="Editor" [(ngModel)]="ficha.content"></ckeditor>
+    <p>{{ficha.description}}</p>
+    <ckeditor [editor]="Editor" [(ngModel)]="ficha.content" (change)="onChange($event)"></ckeditor>
+</div>

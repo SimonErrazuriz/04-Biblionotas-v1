@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Ficha } from '../models/fichas';
-import { NgForm } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +17,7 @@ export class FichasService {
     return this._http.get<Ficha[]>(this.url_api + '/get1/' + id);
   }
   
-  addFicha(ficha: NgForm) {
+  addFicha(ficha: Ficha) {
     return this._http.post(this.url_api + '/post', ficha);
   }
 
@@ -26,4 +25,7 @@ export class FichasService {
     return this._http.delete(this.url_api + '/delete'+ '/' + id);
   }
  
+  updateFicha(ficha: Ficha) {
+    return this._http.put(this.url_api + '/update'+ '/' + ficha._id, ficha);
+  }
 }

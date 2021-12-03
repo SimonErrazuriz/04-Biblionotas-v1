@@ -23,7 +23,9 @@ FichasControllers.deleteFicha = async (req, res) => {
     res.send({ message: 'Ficha Borrada' });
 }
 
-
-
+FichasControllers.updateFicha = async (req, res) => {
+    await Ficha.findByIdAndUpdate(req.params.id, req.body);
+    res.send({ message: 'Ficha Actualizada' });
+}
 
 module.exports = FichasControllers;

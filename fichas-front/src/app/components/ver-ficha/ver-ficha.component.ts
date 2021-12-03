@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FichasService } from 'src/app/services/fichas.service';
 import { Ficha } from 'src/app/models/fichas';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
+import { ChangeEvent } from '@ckeditor/ckeditor5-angular';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -20,7 +20,7 @@ export class VerFichaComponent implements OnInit {
   constructor(
     private fichasService: FichasService,
     private _route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getFicha();
@@ -36,4 +36,13 @@ export class VerFichaComponent implements OnInit {
       );
   }
 
+  public onChange({ editor }: ChangeEvent) {
+    this.ficha.content = editor.getData();
+    this.fichasService.updateFicha(this.ficha)
+      .subscribe(
+         res => {
+          this.getFicha();
+        }
+      );
+  }
 }
