@@ -8,7 +8,8 @@ UsuariosControllers.crearUsuario = async (req, res) => {
         res.send({ message: 'Ya existe el email' });
     } else {
         const newUser = new Usuario(req.body);
-        newUser.save();
+        newUser.password = await newUser.encryptPassword(req.body.password)
+        await newUser.save();
         res.send({ message: 'Usuario creado' });
     }
 }
