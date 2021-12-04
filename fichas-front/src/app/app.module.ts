@@ -9,13 +9,15 @@ import { FichasComponent } from './components/fichas/fichas.component';
 import { CrearFichaComponent } from './components/crear-ficha/crear-ficha.component';
 import { AppRoutingModule } from './app-routing.module';
 import { VerFichaComponent } from './components/ver-ficha/ver-ficha.component';
+import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FichasComponent,
     CrearFichaComponent,
-    VerFichaComponent
+    VerFichaComponent,
+    CrearUsuarioComponent
   ],
   imports: [
     BrowserModule,
