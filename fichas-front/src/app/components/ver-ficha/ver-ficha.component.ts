@@ -38,11 +38,6 @@ export class VerFichaComponent implements OnInit {
 
   public onChange({ editor }: ChangeEvent) {
     this.ficha.content = editor.getData();
-    this.fichasService.updateFicha(this.ficha)
-      .subscribe(
-         res => {
-          this.getFicha();
-        }
-      );
+    this.fichasService.updateFicha(this.ficha).subscribe();
   }
 }
