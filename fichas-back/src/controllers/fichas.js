@@ -3,7 +3,7 @@ const Ficha = require('../models/fichas');
 FichasControllers = {}
 
 FichasControllers.getFichas = async (req, res) => {
-    const fichas = await Ficha.find();
+    const fichas = await Ficha.find({ user: req.userId });
     res.json(fichas);
 }
 
@@ -14,6 +14,7 @@ FichasControllers.getFicha = async (req, res) => {
 
 FichasControllers.addFicha = (req, res) => {
     const newFicha = new Ficha(req.body);
+    newFicha.user = req.userId;
     newFicha.save();
     res.send({ message: 'Ficha Agregada' });
 }

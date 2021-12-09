@@ -1,6 +1,11 @@
 const express = require('express');
-const app = express();
 const cors = require('cors');
+const session = require('express-session');
+const passport = require('passport');
+
+/* Inicializar */
+const app = express();
+require('./config/passport');
 
 /* Definir el puerto */
 app.set("port", 3000);
@@ -9,6 +14,19 @@ app.set("port", 3000);
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cors());
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+/* Variables globales */
+/* app.use((req, res, next) => {
+    res.locals.user = req.user || null;
+    next();
+}); */
 
 /* Cargar las rutas */
 app.use("/api/fichas", require('./routes/fichas'));

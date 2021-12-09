@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-usuario',
@@ -12,6 +13,7 @@ export class CrearUsuarioComponent implements OnInit {
 
   constructor(
     private usuariosService: UsuariosService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -20,8 +22,10 @@ export class CrearUsuarioComponent implements OnInit {
   addUsuario(usuarioForm: NgForm) {
     if (usuarioForm.value.password === usuarioForm.value.confirmPassword) {
       this.usuariosService.addUsuario(usuarioForm.value).subscribe(
-        res => {
+        (res: any) => {
           console.log(res);
+          localStorage.setItem('token', res.token);
+          this.router.navigate(['/fichas']);
         },
         err => console.log(err)
       );

@@ -4,6 +4,7 @@ const UsuariosControllers = require("../controllers/usuarios");
 
 /* Crear rutas */
 routerUsuarios.post('/crear-usuario', UsuariosControllers.crearUsuario);
+routerUsuarios.post('/ingresar', UsuariosControllers.ingresarUsuario);
 
 
 

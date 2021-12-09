@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
@@ -10,6 +10,8 @@ import { CrearFichaComponent } from './components/crear-ficha/crear-ficha.compon
 import { AppRoutingModule } from './app-routing.module';
 import { VerFichaComponent } from './components/ver-ficha/ver-ficha.component';
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
+import { IngresarComponent } from './components/ingresar/ingresar.component';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.
     FichasComponent,
     CrearFichaComponent,
     VerFichaComponent,
-    CrearUsuarioComponent
+    CrearUsuarioComponent,
+    IngresarComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,13 @@ import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.
     FormsModule,
     CKEditorModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

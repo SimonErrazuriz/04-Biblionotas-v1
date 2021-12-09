@@ -1,0 +1,8 @@
+<h1>Ingresar usuario</h1>
+<form #usuarioForm="ngForm" (ngSubmit)="logUsuario(usuarioForm)">
+    <label for="email">Email:</label>
+    <input type="email" name="email" ngModel>
+    <label for="password">Contraseña:</label>
+    <input type="password" name="password" ngModel>
+    <input type="submit">
+</form>

@@ -12,4 +12,10 @@ export class UsuariosService {
   addUsuario(usuario: Usuario) {
     return this._http.post(this.url_api + '/crear-usuario', usuario);
   }
+  logUsuario(usuario: Usuario) {
+    return this._http.post(this.url_api + '/ingresar', usuario);
+  }
+  getToken() {
+    return localStorage.getItem('token');
+  }
 }
