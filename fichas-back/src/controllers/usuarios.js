@@ -18,7 +18,7 @@ UsuariosControllers.crearUsuario = async (req, res) => {
 }
 
 UsuariosControllers.ingresarUsuario = function (req, res, next) {
-    passport.authenticate('local', function (err, user, info) {
+    passport.authenticate('login', function (err, user, info) {
         if (err) { return res.status(401).json(err); }
         if (!user) { return res.status(401).json(info); }
         req.logIn(user, function (err) {
