@@ -1,9 +1,24 @@
-<h1>Crear ficha</h1>
-
-<form #fichaForm="ngForm" (ngSubmit)="addFicha(fichaForm)">
-    <label for="title">Título</label>
-    <input type="text" name="title" ngModel>
-    <label for="title">Descripción</label>
-    <input type="text" name="description" ngModel>
-    <input type="submit" value="Guardar">
-</form>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-8">
+            <div class="card">
+                <h2 class="card-header">Crear Ficha</h2>
+                <div class="card-body">
+                    <form #fichaForm="ngForm" (ngSubmit)="addFicha(fichaForm)">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Título</label>
+                            <input type="text" class="form-control" name="title" id="title" ngModel>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Descripción</label>
+                            <input type="text" class="form-control" name="description" id="description" ngModel>
+                        </div>
+                        <div class="mb-3">
+                            <input type="submit" class="btn btn-primary" value="Guardar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

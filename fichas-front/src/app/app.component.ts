@@ -1,4 +1,4 @@
-import { Component, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { UsuariosService } from './services/usuarios.service';
 
 @Component({
@@ -7,22 +7,32 @@ import { UsuariosService } from './services/usuarios.service';
   styleUrls: ['./app.component.css'],
   providers: [UsuariosService],
 })
-export class AppComponent implements DoCheck {
+export class AppComponent implements OnInit, DoCheck {
   public identificado: boolean = false;
   public usuario!: any;
 
   constructor(
-    private usuariosService: UsuariosService) { }
+    private usuariosService: UsuariosService) {
+    this.identificado = false;
+  }
+
+  ngOnInit() {
+    this.setIdentificado();
+  }
 
   ngDoCheck() {
+    this.setIdentificado();
+  }
+
+  logOut() {
+    this.usuariosService.logOut();
+  }
+
+  setIdentificado() {
     if (this.usuariosService.loggedIn()) {
       this.identificado = true
     } else {
       this.identificado = false;
     }
-  }
-
-  logOut() {
-    this.usuariosService.logOut();
   }
 }

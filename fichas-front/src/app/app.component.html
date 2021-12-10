@@ -1,17 +1,36 @@
-<nav>
-    
-    <div *ngIf="identificado; then siIdentificado else noIdentificado"></div>
-    
-    <ng-template #noIdentificado>
-        <a [routerLink]="['/ingresar']">Ingresar</a>
-        <a [routerLink]="['/crear-usuario']">Registrarse</a>
-    </ng-template>
-    
-    <ng-template #siIdentificado>
-        <a [routerLink]="['/fichas']">Fichas</a>
-        <a [routerLink]="['/crear-ficha']">Crear Ficha</a>
-        <a (click)="logOut()" [routerLink]="['/ingresar']">Cerrar sesión</a>
-    </ng-template>
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <h1 class="navbar-brand">Biblionotas</h1>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <div *ngIf="identificado; then siIdentificado"></div>
+                <ng-template #siIdentificado>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" [routerLink]="['/fichas']">Mis fichas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" [routerLink]="['/crear-ficha']">Crear ficha</a>
+                    </li>
+                </ng-template>
+            </ul>
+            <ul class="navbar-nav">
+                <div *ngIf="!identificado; then noIdentificado; else cerrarSesion"></div>
+                <ng-template #noIdentificado>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" [routerLink]="['/ingresar']">Ingresar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" [routerLink]="['/crear-usuario']">Registrarse</a>
+                    </li>
+                </ng-template>
+                <ng-template #cerrarSesion>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" (click)="logOut()" [routerLink]="['/ingresar']">Cerrar
+                            sesión</a>
+                    </li>
+                </ng-template>
+            </ul>
+        </div>
+    </div>
 </nav>
 <router-outlet>
