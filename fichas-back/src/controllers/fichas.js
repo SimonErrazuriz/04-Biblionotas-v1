@@ -9,7 +9,9 @@ FichasControllers.getFichas = async (req, res) => {
 
 FichasControllers.getFicha = async (req, res) => {
     const ficha = await Ficha.findById(req.params.id);
-    res.json(ficha);
+    if (req.userId === ficha.user) {
+        res.json(ficha);
+    }
 }
 
 FichasControllers.addFicha = (req, res) => {
