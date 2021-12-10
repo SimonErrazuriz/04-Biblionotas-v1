@@ -12,6 +12,7 @@ import { VerFichaComponent } from './components/ver-ficha/ver-ficha.component';
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 import { IngresarComponent } from './components/ingresar/ingresar.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }
+    },
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
