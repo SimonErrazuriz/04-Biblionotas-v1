@@ -1,9 +1,17 @@
 <nav>
-    <a [routerLink]="['/fichas']">Fichas</a>
-    <a [routerLink]="['/crear-ficha']">Crear Ficha</a>
-    <a [routerLink]="['/crear-usuario']">Registrarse</a>
-    <a [routerLink]="['/ingresar']">Ingresar</a>
-    <a (click)="logOut()" [routerLink]="['/ingresar']">Cerrar sesión</a>
-</nav>
+    
+    <div *ngIf="identificado; then siIdentificado else noIdentificado"></div>
+    
+    <ng-template #noIdentificado>
+        <a [routerLink]="['/ingresar']">Ingresar</a>
+        <a [routerLink]="['/crear-usuario']">Registrarse</a>
+    </ng-template>
+    
+    <ng-template #siIdentificado>
+        <a [routerLink]="['/fichas']">Fichas</a>
+        <a [routerLink]="['/crear-ficha']">Crear Ficha</a>
+        <a (click)="logOut()" [routerLink]="['/ingresar']">Cerrar sesión</a>
+    </ng-template>
 
+</nav>
 <router-outlet>
