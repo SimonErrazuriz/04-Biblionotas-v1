@@ -5,10 +5,10 @@ const jwt = require('jsonwebtoken')
 
 /* Crear rutas */
 routerFichas.get('/get', verifyToken, FichasControllers.getFichas);
-routerFichas.get('/get1/:id', FichasControllers.getFicha);
+routerFichas.get('/get1/:id', verifyToken, FichasControllers.getFicha);
 routerFichas.post('/post', verifyToken, FichasControllers.addFicha);
-routerFichas.delete('/delete/:id', FichasControllers.deleteFicha);
-routerFichas.put('/update/:id', FichasControllers.updateFicha);
+routerFichas.delete('/delete/:id', verifyToken, FichasControllers.deleteFicha);
+routerFichas.put('/update/:id', verifyToken, FichasControllers.updateFicha);
 
 
 module.exports = routerFichas;
