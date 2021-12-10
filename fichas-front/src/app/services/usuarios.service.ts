@@ -18,4 +18,7 @@ export class UsuariosService {
   getToken() {
     return localStorage.getItem('token');
   }
+  logOut() {
+    localStorage.removeItem('token');
+  }
 }
