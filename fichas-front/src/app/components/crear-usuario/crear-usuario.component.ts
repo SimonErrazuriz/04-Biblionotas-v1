@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   providers: [UsuariosService]
 })
 export class CrearUsuarioComponent implements OnInit {
-
+  public status!: String;
   constructor(
     private usuariosService: UsuariosService,
     private router: Router
@@ -27,10 +27,12 @@ export class CrearUsuarioComponent implements OnInit {
           localStorage.setItem('token', res.token);
           this.router.navigate(['/fichas']);
         },
-        err => console.log(err)
+        err => {
+          this.status = err.error.message;
+        }
       );
     } else {
-      console.log('Las contraseñas no coinciden')
+      this.status = 'Las contraseñas no coinciden';
     }
   }
 }

@@ -63,6 +63,11 @@
                                 [disabled]="!usuarioForm.form.valid">
                         </div>
                     </form>
+                    <div *ngIf="status">
+                        <div class="alert alert-danger alert-dismissible mt-3" role="alert">
+                            <strong>{{status}}</strong>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
