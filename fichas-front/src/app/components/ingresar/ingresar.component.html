@@ -10,13 +10,38 @@
                     <form #usuarioForm="ngForm" (ngSubmit)="logUsuario(usuarioForm)">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email:</label>
-                            <input type="email" class="form-control" name="email" id="email" ngModel>
+
+                            <input type="email" class="form-control" name="email" id="email" ngModel #email="ngModel"
+                                required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                            <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                                class="alert alert-danger mt-3 validation-form" role="alert">
+                                <div *ngIf="email.errors?.['required']">
+                                    El email es requerido.
+                                </div>
+                                <div *ngIf="email.errors?.['pattern']">
+                                    El email no es válido.
+                                </div>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Contraseña:</label>
-                            <input type="password" class="form-control" name="password" id="password" ngModel>
+                            <input type="password" class="form-control" name="password" id="password" ngModel
+                                #password="ngModel" required minlength="4" aria-describedby="passwordHelpBlock">
+                            <div id="passwordHelpBlock" class="form-text">
+                                Tu contraseña debe tener mínimo 4 caracteres
+                            </div>
+                            <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                                class="alert alert-danger mt-3 validation-form" role="alert">
+                                <div *ngIf="password.errors?.['required']">
+                                    <span class="mensaje-error">La contraseña es requerida.</span>
+                                </div>
+                                <div *ngIf="password.errors?.['minlength']">
+                                    <span class="mensaje-error">Inferior al mínimo de caracteres.</span>
+                                </div>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Ingresar</button>
+                        <button type="submit" class="btn btn-primary"
+                            [disabled]="!usuarioForm.form.valid">Ingresar</button>
                     </form>
                 </div>
             </div>
