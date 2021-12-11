@@ -1,8 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <h1 class="navbar-brand">Biblionotas</h1>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <img src="./assets/img/book.png" width="4%">
+        <h1 class="navbar-brand mx-3 logo">Biblionotas</h1>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent ">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-3">
                 <div *ngIf="identificado; then siIdentificado"></div>
                 <ng-template #siIdentificado>
                     <li class="nav-item">
